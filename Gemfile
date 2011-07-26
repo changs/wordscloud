@@ -13,7 +13,7 @@ gem 'coffee-script'
 gem 'uglifier'
 
 gem 'jquery-rails'
-
+gem 'therubyracer'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -22,8 +22,13 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+group :test, :development do
+  gem "rspec-rails", "~> 2.4"
+end
 
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'webrat'
+  gem 'factory_girl_rails'
 end
