@@ -1,0 +1,32 @@
+<%= form_for @user do |f| %>
+  <% if f.object.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% f.object.errors.full_messages.delete_if { |msg| msg =~ /digest/ }.each do 
+        |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+<div class="field">
+  <%= f.label :fullname %>
+  <%= f.text_field :fullname %>
+</div>
+<div class="field">
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+</div>
+<div class="field">
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+</div>
+<div class="field">
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+</div>
+<div class="action">
+  <% caption = (controller.action_name =~ /new|create/ ) ? "Create my account": "Save changes" %>
+  <%= f.submit caption %>
+</div>
+<% end %>

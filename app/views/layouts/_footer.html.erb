@@ -1,0 +1,5 @@
+<% if Rails.env.development? %>
+<div class="debug" style="border: 1px solid red; margin: 150px; background-color: #F3703A;">
+  <%= debug(params) %>
+</div>
+<% end %>

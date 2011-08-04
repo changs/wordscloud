@@ -11,7 +11,6 @@ gem 'sqlite3'
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'coffee-script'
 gem 'uglifier'
-
 gem 'jquery-rails'
 gem 'therubyracer'
 # Use unicorn as the web server
@@ -22,13 +21,15 @@ gem 'therubyracer'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-group :test, :development do
-  gem "rspec-rails"
-end
 
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'webrat'
-  gem 'factory_girl_rails'
+end
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+  gem 'capybara', git: 'git://github.com/jnicklas/capybara.git'
+  gem "launchy"
+  gem 'database_cleaner'
 end
