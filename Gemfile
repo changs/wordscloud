@@ -21,11 +21,6 @@ gem 'therubyracer'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
-  # Pretty printed test output
-  gem 'turn', :require => false
-end
-gem "rspec-rails", :group => [:test, :development]
-group :test do
   gem "factory_girl_rails"
   gem 'capybara', git: 'git://github.com/jnicklas/capybara.git'
   gem "launchy"
@@ -37,4 +32,5 @@ group :production do
 end
 group :development, :test do
   gem 'sqlite3'
+  gem 'rspec-rails'
 end
