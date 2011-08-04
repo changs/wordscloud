@@ -25,6 +25,7 @@ group :test do
   gem 'capybara', git: 'git://github.com/jnicklas/capybara.git'
   gem "launchy"
   gem 'database_cleaner'
+  gem 'turn', :require => false
 end
 
 group :production do
