@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Your account has been created. Welcome to Wordscloud!"
+      sign_in @user
       redirect_to @user
     else
       render "new"

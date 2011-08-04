@@ -1,0 +1,28 @@
+module SessionsHelper
+  
+  def current_user?(user)
+    user == current_user
+  end
+
+  def current_user
+    begin
+      if cookies[:auth_token]
+        @current_user ||= User.find_by_auth_token!(cookies[:auth_token])
+      end
+    rescue ActiveRecord::RecordNotFound
+      @current_user = nil
+    end
+  end
+
+  def current_user=(user)
+    @current_user = user
+  end
+
+  def signed_in?
+    !current_user.nil?
+  end
+
+  def sign_in(user)
+    cookies[:auth_token] = user.auth_token
+  end
+end

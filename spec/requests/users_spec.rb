@@ -36,5 +36,18 @@ describe "Users" do
       page.should have_content("new_username")
       current_path.should eq(user_path(user))
     end
+
+    it "should sign in a user after signup" do
+      lambda do
+        visit signup_path
+        fill_in "Fullname", with: "Foo Bar"
+        fill_in "Email", with: "foo@example.com"
+        fill_in "Password", with: "foobar"
+        fill_in "Username", with: "foo"
+        click_button "Create my account"
+        page.should have_content("Your account has been created")
+        page.should have_content("Logged as foo")
+      end.should change(User, :count).by(1)
+    end
   end
 end
