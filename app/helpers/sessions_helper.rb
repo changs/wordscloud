@@ -25,4 +25,11 @@ module SessionsHelper
   def sign_in(user)
     cookies[:auth_token] = user.auth_token
   end
+
+  def owner
+    unless current_user?(User.find(params[:id]))
+      flash[:error] = "You're not allowed to do that. Please sign in."
+      redirect_to signin_path
+    end
+  end
 end

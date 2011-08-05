@@ -28,16 +28,17 @@ describe "Users" do
 
     it "should edit user's account with valid parameters" do
       user = Factory(:user)
+      signin user
       visit edit_user_path(user)
+      fill_in "Password", with: user.password
       fill_in "Username", with: "new_username"
-      fill_in "Password", with: "foobar"
       click_button "Save changes"
       page.should have_content("updated")
       page.should have_content("new_username")
       current_path.should eq(user_path(user))
     end
 
-    it "should sign in a user after signup" do
+    it "should sign in a user after sign up" do
       lambda do
         visit signup_path
         fill_in "Fullname", with: "Foo Bar"

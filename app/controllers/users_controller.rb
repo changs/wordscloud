@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :owner, only: [:edit, :update]
   def new
    @user = User.new 
   end

@@ -25,6 +25,14 @@ describe "Session" do
   it "should end a session when get /signout" do
     visit signout_path
     page.should have_content("signed out")
-    current_path.should eq(root_path)
+    #current_path.should eq(root_path)
+  end
+
+  it "should not allow edit user by another user" do
+    user = Factory(:user)
+    user2 = Factory(:user)
+    signin user
+    visit edit_user_path(user2)
+    page.should have_content("not allowed")
   end
 end
