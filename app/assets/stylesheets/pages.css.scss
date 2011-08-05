@@ -5,11 +5,20 @@
 div.header {
   padding: 0.6em;
   background-color: #0c0c0c;
+  color: white;
+  height: 1.5em;
+}
+
+.header .header_left { 
+  float: left;
+}
+.header .header_right {
+  float: right;
 }
 
 .header li {
   display: inline;
-  margin: 3px;
+  margin: 0px, 5px;
   padding: 3px;
 }
 
@@ -22,3 +31,11 @@ div.header {
   color: #739FCE;
   text-decoration: none;
 }
+
+.class_box_shadow{
+    background: #ccc;
+    box-shadow: -1px 0px 8px rgba(0, 0, 0, 0.80);
+    -moz-box-shadow: -1px 0px 8px rgba(0, 0, 0, 0.80);
+    -webkit-box-shadow: -1px 0px 8px rgba(0, 0, 0, 0.80);
+}
+

@@ -45,4 +45,30 @@ describe "Session" do
     find_field("Username").value.should == "foobar"
     find_field("Remember me").should be_checked
   end
+
+  it "should show new_user_form on root_path when no-one is signed in" do
+    visit root_path
+    page.should have_css("div.new_user_form")
+  end
+
+   it "should not show new_user_form on root_path when signed in" do
+    user = Factory(:user)
+    signin user
+    visit root_path
+    page.should have_no_css("div.new_user_form")
+  end
+
+   it "should autocomplete all forms_tag after new_user_form" do
+     visit root_path
+     fill_in "Fullname", with: "Foo Bar"
+     fill_in "Email", with: "foobar@example.com"
+     fill_in "Password", with: "password"
+     click_button "Sign up!"
+
+     current_path.should eq(new_user_path)
+     find_field("Username").value.should == "foobar"
+     find_field("Email").value.should == "foobar@example.com"
+     find_field("Fullname").value.should == "Foo Bar"
+     find_field("Password").value.should == "password"
+   end
 end

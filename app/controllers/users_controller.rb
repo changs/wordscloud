@@ -1,7 +1,19 @@
 class UsersController < ApplicationController
   before_filter :owner, only: [:edit, :update]
   def new
-   @user = User.new 
+    if request.post?
+      @title = "You are almost done!"
+      @user = User.new(username: params[:fullname].gsub(/\s+/,'').downcase,
+                       fullname: params[:fullname],
+                       email: params[:email],
+                       password: params[:password])
+      @user.valid?
+      @passw = params[:password]
+    else
+      @title = "Create a new user"
+      @user = User.new
+      @passw = ""
+    end
   end
 
   def create
@@ -11,6 +23,7 @@ class UsersController < ApplicationController
       sign_in @user
       redirect_to @user
     else
+      @title = "You are almost done!"
       @passw = params[:user][:password]
       render "new"
     end

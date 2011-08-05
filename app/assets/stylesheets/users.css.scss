@@ -13,8 +13,19 @@ $red: #E01B4C;
   font-family:tahoma, arial, sans-serif;
 }
 
+.field label {
+  margin-top: 10px;
+  margin-bottom: 3px;
+  font-weight: bold;
+  display: block;
+
+}
 .field input[type="checkbox"] {
   width: 20px;
+}
+
+.field label.near_checkbox {
+  display: inline;
 }
 
 div.field_with_errors {
@@ -30,6 +41,7 @@ div.field_with_errors {
 }
 
 .input_submit {
+  margin-top: 10px;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;

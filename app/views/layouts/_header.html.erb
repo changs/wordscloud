@@ -1,13 +1,20 @@
-<div class="header">
-  <ul>
-    <li><%= link_to "Start", root_path %></li>
+<div class="header class_box_shadow">
+  <div class="header_left">
+    <ul>
+      <li><%= link_to "Start", root_path %></li>
+      <% if signed_in? %>
+      <li><%= link_to "My page", user_path(current_user) %></li>
+      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+      <li><%= link_to "Sign out", signout_path %></li>
+      <% else %>
+      <li><%= link_to "Sign up!", signup_path %></li>
+      <li><%= link_to "Sign in!", signin_path %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="header_right">
     <% if signed_in? %>
-    <li><%= link_to "My page", user_path(current_user) %></li>
-    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-    <li><%= link_to "Sign out", signout_path %></li>
-    <% else %>
-    <li><%= link_to "Sign up!", signup_path %></li>
-    <li><%= link_to "Sign in!", signin_path %></li>
+    <%= "Logged as #{current_user.username}" %>
     <% end %>
-  </ul>
+  </div>
 </div>

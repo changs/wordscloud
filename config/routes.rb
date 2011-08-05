@@ -1,5 +1,9 @@
 Wordscloud::Application.routes.draw do
-  resources :users
+  resources :users do
+    member do
+      post 'new'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
