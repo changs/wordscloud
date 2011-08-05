@@ -25,7 +25,7 @@ describe "Session" do
   it "should end a session when get /signout" do
     visit signout_path
     page.should have_content("signed out")
-    #current_path.should eq(root_path)
+    current_path.should eq(root_path)
   end
 
   it "should not allow edit user by another user" do
@@ -34,5 +34,15 @@ describe "Session" do
     signin user
     visit edit_user_path(user2)
     page.should have_content("not allowed")
+  end
+
+  it "should remember form values after invalid validation" do
+    visit signin_path
+    fill_in "Username", with: "foobar"
+    check "Remember me"
+    click_button "Sign in"
+
+    find_field("Username").value.should == "foobar"
+    find_field("Remember me").should be_checked
   end
 end

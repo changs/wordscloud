@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
-    redirect_to new_user_path, notice: "You have been signed out"
+    redirect_to root_path, notice: "You have been signed out"
   end
 
 end

@@ -19,7 +19,7 @@
 </div>
 <div class="field">
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, value: @passw %>
 </div>
 <div class="field">
   <%= f.label :username %>
@@ -27,6 +27,6 @@
 </div>
 <div class="action">
   <% caption = (controller.action_name =~ /new|create/ ) ? "Create my account": "Save changes" %>
-  <%= f.submit caption %>
+  <%= f.submit caption, class: "input_submit" %>
 </div>
 <% end %>

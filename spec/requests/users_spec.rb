@@ -47,7 +47,7 @@ describe "Users" do
         fill_in "Username", with: "foo"
         click_button "Create my account"
         page.should have_content("Your account has been created")
-        page.should have_content("Logged as foo")
+        page.should have_content("My page")
       end.should change(User, :count).by(1)
     end
   end

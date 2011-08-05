@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       sign_in @user
       redirect_to @user
     else
+      @passw = params[:user][:password]
       render "new"
     end
   end

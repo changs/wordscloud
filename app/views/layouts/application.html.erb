@@ -8,10 +8,12 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
-    <%= yield %>
-  <%= render 'layouts/footer' %>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

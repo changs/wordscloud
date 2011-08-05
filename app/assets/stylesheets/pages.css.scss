@@ -1,0 +1,24 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.header {
+  padding: 0.6em;
+  background-color: #0c0c0c;
+}
+
+.header li {
+  display: inline;
+  margin: 3px;
+  padding: 3px;
+}
+
+.header a:visited, .header a {
+  color: white;
+  text-decoration: none;
+}
+
+.header a:hover {
+  color: #739FCE;
+  text-decoration: none;
+}

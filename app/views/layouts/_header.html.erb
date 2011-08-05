@@ -1,5 +1,13 @@
 <div class="header">
-  <% if signed_in? %>
-  <%= "Logged as #{current_user.username}" %>
-  <% end %>
+  <ul>
+    <li><%= link_to "Start", root_path %></li>
+    <% if signed_in? %>
+    <li><%= link_to "My page", user_path(current_user) %></li>
+    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+    <li><%= link_to "Sign out", signout_path %></li>
+    <% else %>
+    <li><%= link_to "Sign up!", signup_path %></li>
+    <li><%= link_to "Sign in!", signin_path %></li>
+    <% end %>
+  </ul>
 </div>
