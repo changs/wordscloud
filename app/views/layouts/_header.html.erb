@@ -1,5 +1,5 @@
-<div class="header class_box_shadow">
-  <div class="header_left">
+<div class="header">
+  <div class="left">
     <ul>
       <li><%= link_to "Start", root_path %></li>
       <% if signed_in? %>
@@ -12,9 +12,13 @@
       <% end %>
     </ul>
   </div>
-  <div class="header_right">
+  <div class="right">
     <% if signed_in? %>
     <%= "Logged as #{current_user.username}" %>
     <% end %>
   </div>
 </div>
+<div class="clear"></div>
+<script type="text/javascript" charset="utf-8">
+  $('li a[href|="<%= request.fullpath %>"]').addClass("active")
+</script>

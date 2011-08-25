@@ -8,12 +8,31 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div class="container">
-      <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :class => "#{name}" %>
-      <% end %>
-      <%= yield %>
+    <div class="logo">
     </div>
+
+    <div id="wrapper">
+      <div id="main">
+        <div class="body">
+          <%= yield %>
+        </div>
+      </div>
+      <div id="sidebar">
+        <div id="side_top">
+          <h2>Dashboard</h2><br>
+        </div>
+        <div id="side_bottom">
+          <h3>Recent activity</h3>
+        </div>
+      </div>
+    </div>
+    <div class="clear">
+
+    </div>
+
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :class => "#{name}" %>
+    <% end %>
     <%= render 'layouts/footer' %>
   </body>
 </html>
