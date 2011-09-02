@@ -6,7 +6,7 @@ gem 'sprockets'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'will_paginate', '~> 3.0.0'
 # Asset template engines
 gem 'sass-rails' #, :git => 'https://github.com/rails/sass-rails.git'
 gem 'coffee-script'

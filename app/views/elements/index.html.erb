@@ -1,23 +1,23 @@
-<table>
-  <thead>
-  <tr>
-    <th>Question</th>
-    <th>Answer</th>
-  </tr>
-</thead>
-<tbody>
-  <% @elements.each do |item| %>
-  <tr id="<%= item.id %>" class="item_row">
-    <td><%= item.question[0..20] %></td>
-    <td><%= item.answer[0..20] %></td>
-  </tr>
-  <% end %>
-</tbody>
-</table>
+<div id="elements">
+  <%= render 'elements', elements: @elements %>
+</div>
 
 <script>
-  $(".item_row").click( function() {
-    var id = $(event.target).parent().attr('id');
-    window.location.href = '/users/<%= current_user.id %>/elements/' + id + '/edit'
+  $(function() {
+    $(".item_row").live("click", function() {
+      var id = $(event.target).parent().attr('id');
+      window.location.href = '/users/<%= current_user.id %>/elements/' + id + '/edit'
+    });
+
+    $(".pagination a").live("click", function() {
+      $.getScript(this.href)
+      history.pushState(null, document.title, this.href);
+      $(".pagination").html("Page is loading...");
+      return false;
+    });
+
+        $(window).bind("popstate", function() {
+      $.getScript(location.href);
+    });
   });
 </script>

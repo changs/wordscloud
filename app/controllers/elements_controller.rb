@@ -6,7 +6,7 @@ class ElementsController < ApplicationController
   end
 
   def index
-    @elements = current_user.elements.all
+    @elements = current_user.elements.paginate(per_page: 1, page: params[:page])
   end
 
   def new
