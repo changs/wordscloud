@@ -10,17 +10,35 @@
     <%= render 'layouts/header' %>
     <div class="logo">
     </div>
-
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :class => "#{name}" %>
+    <% end %>
+    <div id="top">
+      <ul>
+        <% if signed_in? %>
+        <li class="top_link">My page</li>
+        <li><%= link_to 'Review', review_path, class: 'top_link' %></li>
+        <li><%= link_to 'My words', items_path, class: 'top_link' %></li>
+        <% end %>
+      </ul>
+    </div>
     <div id="wrapper">
       <div id="main">
-        <div class="body">
+        <div id="body">
           <%= yield %>
         </div>
       </div>
       <div id="sidebar">
+        <% if signed_in? %>
         <div id="side_top">
           <h2>Dashboard</h2><br>
+          <span class="side_stat">
+            To review: <span id="how_many_to_review"><%= how_many_to_review %></span>
+          <span class="side_stat">
+            Items: <span id="how_many_elements"><%= how_many_elements %></span>
+          </div>
         </div>
+        <% end %>
         <div id="side_bottom">
           <h3>Recent activity</h3>
         </div>
@@ -29,10 +47,6 @@
     <div class="clear">
 
     </div>
-
-    <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :class => "#{name}" %>
-    <% end %>
     <%= render 'layouts/footer' %>
   </body>
 </html>

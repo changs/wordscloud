@@ -1,14 +1,20 @@
 Wordscloud::Application.routes.draw do
   resources :users do
+    resources :elements
     member do
       post 'new'
     end
   end
+
+
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
-
+  match '/items', to: 'elements#index'
+  match '/new_item', to: 'elements#new'
+  match '/review', to: 'elements#review'
+  match '/users/:user_id/elements/:id/reviewed' => 'elements#reviewed' 
   root to: "pages#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.

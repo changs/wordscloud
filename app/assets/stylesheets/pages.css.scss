@@ -22,13 +22,43 @@ div.header {
   float: left;
 }
 
+#top {
+  position: relative;
+  margin: 0 auto;
+  width:960px;
+  padding-bottom: 30px;
+}
+
+#top ul {
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+}
+
+#top li {
+  display: inline;
+}
+
+.top_link {
+  padding: 5px;
+  margin: 0 6px;
+  background-color: #E6E6E6;
+  border: 1px solid #C7C7C7;
+  border-bottom: 0px solid;
+}
+
+
+#top a:hover {
+  background-color: #99FFBB;
+}
+
 #wrapper { 
   margin: 0 auto;
   width:960px;
   overflow: hidden;
   border: 1px solid #C7C7C7;
 }
-.body {
+#body {
   padding: 5px;
 }
 
@@ -52,6 +82,13 @@ div.header {
 #side_top {
   border-bottom: 1px solid #C7C7C7;
   padding: 3px;
+}
+
+
+
+.side_stat {
+  margin-left: 5px;
+  font-size: 16px;
 }
 
 .clear {

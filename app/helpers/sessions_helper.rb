@@ -1,5 +1,5 @@
 module SessionsHelper
-  
+
   def current_user?(user)
     user == current_user
   end
@@ -26,10 +26,21 @@ module SessionsHelper
     cookies[:auth_token] = user.auth_token
   end
 
+  def signed_in
+    redirect_to signin_path unless signed_in?
+  end
+
   def owner
     unless current_user?(User.find(params[:id]))
       flash[:error] = "You're not allowed to do that. Please sign in."
       redirect_to signin_path
+    end
+
+  end
+  def owner_of
+    unless (Element.find(params[:id])).user_id == current_user.id
+      flash[:error] = "You're not allowed to do that."
+      redirect_to current_user 
     end
   end
 end

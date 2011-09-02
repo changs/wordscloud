@@ -11,7 +11,7 @@ describe User do
     it "should create a new instance given valid attributes" do
       User.create!(@attr)
     end
-    
+ 
     it "should require a name" do
       invalid_user = User.new(@attr.merge(username: ""))
       invalid_user.should_not be_valid
@@ -99,5 +99,9 @@ describe User do
       first_user.auth_token.should_not == second_user.auth_token
     end
   end
-end
 
+  it "should respond do elements" do
+    user = User.new(@attr)
+    user.should respond_to(:elements)
+  end
+end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :elements
   attr_accessible :username, :fullname, :email, :password
   before_create { generate_token(:auth_token) }
 
