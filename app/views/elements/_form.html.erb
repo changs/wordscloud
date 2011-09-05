@@ -36,7 +36,7 @@
     }
   });
 
-  $('#element_answer').keydown(function() {
+  $('#element_answer').keydown(function(event) {
     if(event.keyCode == 8) {
       box.val(answer.substring(0, box.val().length+1));  
     }
