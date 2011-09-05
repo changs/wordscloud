@@ -5,29 +5,33 @@
 </div>
 <span id="show_answer">Show answer</span>
 <div class="field">
-    <%= f.text_area :answer, value: "", rows: 3, cols: 80 %>
+  <%= f.text_area :answer, value: "", rows: 3, cols: 80 %>
 </div>
 <div id="grades" class="action" style="visibility: hidden;">
-    <%= f.submit "Ideal", class: "input_submit" %>
-    <%= f.submit "Good", class: "input_submit" %>
-    <%= f.submit "Pass", class: "input_submit" %>
-    <%= f.submit "Bad", class: "input_submit" %>
-    <%= f.submit "Null", class: "input_submit" %>
-  </div>
+  <%= f.submit "Ideal", class: "input_submit" %>
+  <%= f.submit "Good", class: "input_submit" %>
+  <%= f.submit "Pass", class: "input_submit" %>
+  <%= f.submit "Bad", class: "input_submit" %>
+  <%= f.submit "Null", class: "input_submit" %>
+</div>
 <% end %>
 
 <script>
   $('#element_answer').focus();
   var answer = "<%= @element.answer %>";
   var box = $('#element_answer')
-
+  var once = false;
   $('#show_answer').click(function() {
     box.val(answer);
-    $('#grades').css('visibility','visible').hide().fadeIn("slow");
+    if(!once) {
+      $('#grades').css('visibility','visible').hide().fadeIn("slow");
+    }
   });
 
+
   $('#element_answer').keyup(function() {
-    if(box.val().length == answer.length) {
+    if(box.val().length == answer.length && !once) {
+      once = true;
       $('#grades').css('visibility','visible').hide().fadeIn("slow");
     }
   });
