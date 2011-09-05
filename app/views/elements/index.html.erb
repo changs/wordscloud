@@ -4,8 +4,8 @@
 
 <script>
   $(function() {
-    $(".item_row").live("click", function() {
-      var id = $(event.target).parent().attr('id');
+    $(".item_row").live("click", function(evt) {
+      var id = $(evt.target).parent().attr('id');
       window.location.href = '/users/<%= current_user.id %>/elements/' + id + '/edit'
     });
 
