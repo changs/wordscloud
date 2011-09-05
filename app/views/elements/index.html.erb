@@ -10,14 +10,15 @@
     });
 
     $(".pagination a").live("click", function() {
+       $.ajaxSetup({ cache: true })
       $.getScript(this.href)
       history.pushState(null, document.title, this.href);
       $(".pagination").html("Page is loading...");
       return false;
     });
 
-        $(window).bind("popstate", function() {
-      $.getScript(location.href);
-    });
+//    $(window).bind("popstate", function() {
+//      $.getScript(location.href);
+//    }); 
   });
 </script>
