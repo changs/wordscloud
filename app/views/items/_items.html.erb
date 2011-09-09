@@ -1,0 +1,24 @@
+
+<table>
+  <thead>
+  <tr>
+    <th>Question</th>
+    <th>Answer</th>
+  </tr>
+</thead>
+<tbody>
+
+  <% items.each do |item| %>
+  <tr id="<%= item.id %>" class="item_row">
+    <td><%= item.question[0..20] %></td>
+    <td><%= item.answer[0..20] %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+<div class="pagination">
+    <div class="page_info">
+      <%= page_entries_info items %>
+    </div>
+    <%= will_paginate items, :container => false %>
+  </div>
