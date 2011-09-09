@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  layout 'pages'
   def new
    @title = "Sign in!" 
   end
@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
+    current_user = nil
     redirect_to root_path, notice: "You have been signed out"
   end
 

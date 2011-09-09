@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_filter :owner, only: [:edit, :update]
+  layout :user_layout
+
   def new
+    @application_layout = false
     if request.post?
       @title = "You are almost done!"
       @user = User.new(username: params[:fullname].gsub(/\s+/,'').downcase,
@@ -25,16 +28,19 @@ class UsersController < ApplicationController
     else
       @title = "You are almost done!"
       @passw = params[:user][:password]
+      @application_layout = false
       render "new"
     end
   end
 
   def show
     @user = User.find(params[:id])
+    @application_layout = true
   end
 
   def edit
     @user = User.find(params[:id])
+    @application_layout = true
   end
 
   def update
@@ -43,7 +49,13 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to @user
     else
+      @application_layout = true
       render "edit"
     end
+  end
+
+  private
+  def user_layout
+    @application_layout == true ? "application" : "pages"
   end
 end

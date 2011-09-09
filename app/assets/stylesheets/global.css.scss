@@ -45,3 +45,134 @@ background: linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
   background-color: #FFBABA;
   background-image: url('/assets/icons/badge-circle-cross-24.png');
 }
+
+div.header {
+  background-color: #202328;
+  color: white;
+  height: 30px;
+  width: 100%;
+  padding-top: 8px;
+  -webkit-box-shadow: 0px 0px 3px 0px #6b6b6b;
+  -moz-box-shadow: 0px 0px 3px 0px #6b6b6b;
+  box-shadow: 0px 0px 3px 0px #6b6b6b;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+#top {
+  position: relative;
+  margin: 0 auto;
+  width:960px;
+  padding-bottom: 30px;
+}
+
+#top ul {
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+}
+
+#top li {
+  display: inline;
+}
+
+.top_link {
+  padding: 5px;
+  margin: 0 6px;
+  background-color: #E6E6E6;
+  border: 1px solid #C7C7C7;
+  border-bottom: 0px solid;
+}
+
+
+#top a:hover {
+  background-color: #99FFBB;
+}
+
+#wrapper { 
+  margin: 0 auto;
+  width:960px;
+  overflow: hidden;
+  border: 1px solid #C7C7C7;
+}
+#body {
+  padding: 5px;
+}
+
+#main, #sidebar {
+  float: left;
+  padding-bottom: 9999px;
+  margin-bottom:-9999px;
+}
+
+#main {
+  background: white;
+  width: 650px;
+}
+
+#sidebar {
+  border-left: 1px solid #C7C7C7;
+  background:#DFDFDF;
+  width: 309px;
+}
+
+#side_top {
+  border-bottom: 1px solid #C7C7C7;
+  padding: 3px;
+}
+
+
+
+.side_stat {
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+.clear {
+  clear: both;
+}
+.header li {
+  display: inline;
+  padding: 10px;
+}
+
+.header a:visited, .header a {
+  padding: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+.header a:hover {
+  color: #739FCE;
+  text-decoration: none;
+}
+
+.header .active {
+  border: 1px solid #344B74;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  background: #c3d9ff;
+  background: -moz-linear-gradient(top, #c3d9ff 0%, #b1c8ef 41%, #98b0d9 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c3d9ff), color-stop(41%,#b1c8ef), color-stop(100%,#98b0d9));
+  background: -webkit-linear-gradient(top, #c3d9ff 0%,#b1c8ef 41%,#98b0d9 100%);
+  background: -o-linear-gradient(top, #c3d9ff 0%,#b1c8ef 41%,#98b0d9 100%);
+  background: -ms-linear-gradient(top, #c3d9ff 0%,#b1c8ef 41%,#98b0d9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3d9ff', endColorstr='#98b0d9',GradientType=0 );
+  background: linear-gradient(top, #c3d9ff 0%,#b1c8ef 41%,#98b0d9 100%);
+}
+
+.header a:hover.active {
+  color: white;
+}
+
+.logo {
+  height: 100px;
+}
