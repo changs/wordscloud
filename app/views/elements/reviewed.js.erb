@@ -1,8 +1,0 @@
-$("#how_many_to_review").html("<%= how_many_to_review%>")
-<% unless @element.nil? %>
-$("#body").html("<%= escape_javascript(render('elements/form')) %>")
-$("#body").hide()
-$("#body").fadeIn("slow");
-<% else %>
-$("#body").html("All reviewed!")
-<% end %>

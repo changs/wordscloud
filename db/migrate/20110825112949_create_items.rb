@@ -1,6 +1,6 @@
-class CreateElements < ActiveRecord::Migration
+class CreateItems < ActiveRecord::Migration
   def change
-    create_table :elements do |t|
+    create_table :items do |t|
       t.string :question
       t.string :answer
       t.float :ef

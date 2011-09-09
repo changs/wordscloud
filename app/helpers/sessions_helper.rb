@@ -38,7 +38,7 @@ module SessionsHelper
 
   end
   def owner_of
-    unless (Element.find(params[:id])).user_id == current_user.id
+    unless (Item.find(params[:id])).user_id == current_user.id
       flash[:error] = "You're not allowed to do that."
       redirect_to current_user 
     end

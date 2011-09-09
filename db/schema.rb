@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20110830094054) do
 
-  create_table "elements", :force => true do |t|
+  create_table "items", :force => true do |t|
     t.string   "question"
     t.string   "answer"
     t.float    "ef"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20110830094054) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.datetime "to_review"
+    t.datetime "review_at"
   end
 
   create_table "users", :force => true do |t|

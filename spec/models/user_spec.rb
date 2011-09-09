@@ -100,8 +100,8 @@ describe User do
     end
   end
 
-  it "should respond do elements" do
+  it "should respond do items" do
     user = User.new(@attr)
-    user.should respond_to(:elements)
+    user.should respond_to(:items)
   end
 end
