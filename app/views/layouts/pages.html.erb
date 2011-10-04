@@ -9,7 +9,12 @@
   </head>
   <body id="pages">
     <div id="content">
-    <%= yield %>
+      <% flash.each do |name, msg| %>
+      <%= content_tag :div, :id => "note" do %>
+      <%= msg %> <a id="close">[close]</a>
+      <% end %>
+      <% end %>
+      <%= yield %>
     </div>
   </body>
 </html>
