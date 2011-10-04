@@ -10,7 +10,8 @@
   <body id="pages">
     <div id="content">
       <% flash.each do |name, msg| %>
-      <%= content_tag :div, :id => "note" do %>
+      <% nm = "note_#{name}" %>
+      <%= content_tag :div, :id => "note", class: nm do %>
       <%= msg %> <a id="close">[close]</a>
       <% end %>
       <% end %>

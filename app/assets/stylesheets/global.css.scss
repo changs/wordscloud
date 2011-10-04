@@ -23,20 +23,45 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
-  background: #ffff88;
-background: -moz-linear-gradient(top, #ffff88 0%, #ffff19 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffff88), color-stop(100%,#ffff19));
-background: -webkit-linear-gradient(top, #ffff88 0%,#ffff19 100%);
-background: -o-linear-gradient(top, #ffff88 0%,#ffff19 100%);
-background: -ms-linear-gradient(top, #ffff88 0%,#ffff19 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffff19',GradientType=0 );
-background: linear-gradient(top, #ffff88 0%,#ffff19 100%);
   text-align: center;
   line-height: 2.5;
   overflow: hidden;
   -webkit-box-shadow: 0 0 5px black;
   -moz-box-shadow:    0 0 5px black;
   box-shadow:         0 0 5px black;
+}
+
+.note_error {
+  background: #ffb1aa;
+  background: -moz-linear-gradient(top, #ffb1aa 0%, #ce6969 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb1aa), color-stop(100%,#ce6969));
+  background: -webkit-linear-gradient(top, #ffb1aa 0%,#ce6969 100%);
+  background: -o-linear-gradient(top, #ffb1aa 0%,#ce6969 100%);
+  background: -ms-linear-gradient(top, #ffb1aa 0%,#ce6969 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb1aa', endColorstr='#ce6969',GradientType=0 );
+  background: linear-gradient(top, #ffb1aa 0%,#ce6969 100%);
+}
+
+.note_notice {
+  background: #ffff88;
+  background: -moz-linear-gradient(top, #ffff88 0%, #ffff19 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffff88), color-stop(100%,#ffff19));
+  background: -webkit-linear-gradient(top, #ffff88 0%,#ffff19 100%);
+  background: -o-linear-gradient(top, #ffff88 0%,#ffff19 100%);
+  background: -ms-linear-gradient(top, #ffff88 0%,#ffff19 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffff19',GradientType=0 );
+  background: linear-gradient(top, #ffff88 0%,#ffff19 100%);
+}
+
+.note_success {
+  background: #d2ff52;
+  background: -moz-linear-gradient(top, #d2ff52 0%, #91e842 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2ff52), color-stop(100%,#91e842));
+  background: -webkit-linear-gradient(top, #d2ff52 0%,#91e842 100%);
+  background: -o-linear-gradient(top, #d2ff52 0%,#91e842 100%);
+  background: -ms-linear-gradient(top, #d2ff52 0%,#91e842 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842',GradientType=0 );
+  background: linear-gradient(top, #d2ff52 0%,#91e842 100%);
 }
 
 .cssanimations.csstransforms #note {
