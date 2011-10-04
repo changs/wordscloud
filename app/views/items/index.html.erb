@@ -11,7 +11,7 @@
     });
 
     $(".pagination a").live("click", function() {
-      $.ajaxSetup({ cache: true })
+      $.ajaxSetup({ cache: false })
       $.getScript(this.href)
       history.pushState(null, document.title, this.href);
       $(".pagination").html("Page is loading...");
