@@ -7,43 +7,56 @@ html, body {
   height: 100%;
   margin-bottom: 1px;
   background: #eeeeee;
-background: -moz-linear-gradient(top, #eeeeee 0%, #eeeeee 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#eeeeee));
-background: -webkit-linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
-background: -o-linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
-background: -ms-linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 );
-background: linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
+  background: -moz-linear-gradient(top, #eeeeee 0%, #eeeeee 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#eeeeee));
+  background: -webkit-linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
+  background: -o-linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
+  background: -ms-linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 );
+  background: linear-gradient(top, #eeeeee 0%,#eeeeee 100%);
 }
 
 
+#note {
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffff88;
+background: -moz-linear-gradient(top, #ffff88 0%, #ffff19 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffff88), color-stop(100%,#ffff19));
+background: -webkit-linear-gradient(top, #ffff88 0%,#ffff19 100%);
+background: -o-linear-gradient(top, #ffff88 0%,#ffff19 100%);
+background: -ms-linear-gradient(top, #ffff88 0%,#ffff19 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffff19',GradientType=0 );
+background: linear-gradient(top, #ffff88 0%,#ffff19 100%);
+  text-align: center;
+  line-height: 2.5;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 5px black;
+  -moz-box-shadow:    0 0 5px black;
+  box-shadow:         0 0 5px black;
+}
 
-.notice, .success, .warning, .error, .validation {
-  border: 1px solid;
-  margin: 10px 0px;
-  padding:15px 10px 15px 50px;
-  background-repeat: no-repeat;
-  background-position: 10px center;
+.cssanimations.csstransforms #note {
+  -webkit-transform: translateY(-50px);
+  -webkit-animation: slideDown 4.5s 1.0s 1 ease forwards;
+  -moz-transform:    translateY(-50px);
+  -moz-animation:    slideDown 4.5s 1.0s 1 ease forwards;
 }
-.notice {
-  color: #00529B;
-  background-color: #BDE5F8;
-  background-image: url('/assets/icons/note-24.png');
+
+.cssanimations.csstransforms #close {
+  display: none;
 }
-.success {
-  color: #4F8A10;
-  background-color: #DFF2BF;
-  background-image:url('/assets/icons/badge-circle-check-24.png');
+
+@-webkit-keyframes slideDown {
+  0%, 100% { -webkit-transform: translateY(-50px); }
+  10%, 90% { -webkit-transform: translateY(0px); }
 }
-.warning {
-  color: #9F6000;
-  background-color: #FEEEB3;
-  background-image: url('/assets/icons/warning-24.png');
-}
-.error {
-  color: #D8000C;
-  background-color: #FFBABA;
-  background-image: url('/assets/icons/badge-circle-cross-24.png');
+@-moz-keyframes slideDown {
+  0%, 100% { -moz-transform: translateY(-50px); }
+  10%, 90% { -moz-transform: translateY(0px); }
 }
 
 div.header {

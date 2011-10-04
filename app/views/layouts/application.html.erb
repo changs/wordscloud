@@ -11,15 +11,15 @@
     <div class="logo">
     </div>
     <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :class => "#{name}" %>
+    <%= content_tag :div, :id => "note" do %>
+    <%= msg %> <a id="close">[close]</a>
+    <% end %>
     <% end %>
     <div id="top">
       <ul>
-        <% if signed_in? %>
         <li class="top_link">My page</li>
         <li><%= link_to 'Review', review_path, class: 'top_link' %></li>
         <li><%= link_to 'My words', items_path, class: 'top_link' %></li>
-        <% end %>
       </ul>
     </div>
     <div id="wrapper">
@@ -29,24 +29,22 @@
         </div>
       </div>
       <div id="sidebar">
-        <% if signed_in? %>
         <div id="side_top">
           <h2>Dashboard</h2><br>
           <span class="side_stat">
             To review: <span id="how_many_to_review"><%= how_many_to_review %></span>
-          <span class="side_stat">
-            Items: <span id="how_many_items"><%= how_many_items %></span>
+            <span class="side_stat">
+              Items: <span id="how_many_items"><%= how_many_items %></span>
+            </div>
+          </div>
+          <div id="side_bottom">
+            <h3>Recent activity</h3>
           </div>
         </div>
-        <% end %>
-        <div id="side_bottom">
-          <h3>Recent activity</h3>
-        </div>
       </div>
-    </div>
-    <div class="clear">
+      <div class="clear">
 
-    </div>
-    <%= render 'layouts/footer' %>
-  </body>
-</html>
+      </div>
+      <%= render 'layouts/footer' %>
+    </body>
+  </html>

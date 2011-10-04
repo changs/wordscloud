@@ -1,11 +1,11 @@
 <%= form_for ([current_user, @item]), url: "/users/#{current_user.id}/items/#{@item.id}/reviewed", remote: true do |f| %>
-<%= link_to "Edit", url_for([:edit, current_user, @item]) %>
+<span class="bookmark_top"><%= link_to "Edit", url_for([:edit, current_user, @item]) %></span>
 <div class="field">
-  <%= f.text_area :question, rows: 3, cols: 80  %>
+  <%= f.text_area :question, rows: 3, cols: 60, class: "answer_area"  %>
 </div>
-<span id="show_answer">Show answer</span>
+<span id="show_answer" class="bookmark_top" >Show answer</span>
 <div class="field">
-  <%= f.text_area :answer, value: "", rows: 3, cols: 80 %>
+  <%= f.text_area :answer, value: "", rows: 1, cols: 60, class: "answer_area"%>
 </div>
 <div id="grades" class="action" style="visibility: hidden;">
   <%= f.submit "Ideal", class: "input_submit" %>
@@ -21,17 +21,20 @@
   var answer = "<%= @item.answer %>";
   var box = $('#item_answer')
   var once = false;
+  var old = $('#item_answer').css('background-color');
+
   $('#show_answer').click(function() {
     box.val(answer);
     if(!once) {
+      $('#show_answer').css('visibility','hidden');
       $('#grades').css('visibility','visible').hide().fadeIn("slow");
     }
   });
 
-
   $('#item_answer').keyup(function() {
     if(box.val().length == answer.length && !once) {
       once = true;
+      $('#show_answer').css('visibility','hidden');
       $('#grades').css('visibility','visible').hide().fadeIn("slow");
     }
   });
@@ -45,6 +48,10 @@
       char_answer = answer.substring(box.val().length, box.val().length+1).toLowerCase();
       if(key == char_answer) {
         box.val(box.val() + answer.substring(box.val().length, box.val().length+1));
+      } 
+      else {
+        $('#item_answer').css('background-color','#FFB0B0');
+        setTimeout( "$('#item_answer').css('background-color', old)",100);
       }
     }
     return false;

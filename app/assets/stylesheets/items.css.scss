@@ -2,8 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#show_answer {
+.answer_area {
+  background: #EEEEEE;
+  border: 0px;
+  border-bottom: 2px solid #DFDFDF;
+  resize: none;
+  outline: none;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.bookmark_top {
   cursor: pointer;
+  background-color: #58585A;
+  padding: 3px 4px 10px;
+  font-size: smaller;
+  color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+.bookmark_top:hover {
+  background-color: #5AC05A;
+}
+
+.bookmark_top a{
+  color: white;
+  text-decoration: none;
 }
 
 table         { margin-bottom: 1.4em; width:100%; }
