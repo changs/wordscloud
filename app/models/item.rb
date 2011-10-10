@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :question, :answer, :user
+  attr_accessible :question, :answer, :user, :public
   attr_accessor :grade
   belongs_to :user
   validates :question, presence: true
