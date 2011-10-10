@@ -17,40 +17,41 @@
 <% end %>
 
 <script>
-  $('#item_answer').focus();
   var answer = "<%= @item.answer %>";
-  var box = $('#item_answer')
+  var answer_box = $('#item_answer')
+  answer_box.focus();
   var once = false;
-  var old = $('#item_answer').css('background-color');
+  var old = answer_box.css('background-color');
+  var show_answer = $('#show_answer');
 
-  $('#show_answer').click(function() {
-    box.val(answer);
+  show_answer.click(function() {
+    answer_box.val(answer);
     if(!once) {
-      $('#show_answer').css('visibility','hidden');
+      show_answer.css('visibility','hidden');
       $('#grades').css('visibility','visible').hide().fadeIn("slow");
     }
   });
 
-  $('#item_answer').keyup(function() {
-    if(box.val().length == answer.length && !once) {
+  answer_box.keyup(function() {
+    if(answer_box.val().length == answer.length && !once) {
       once = true;
-      $('#show_answer').css('visibility','hidden');
+      show_answer.css('visibility','hidden');
       $('#grades').css('visibility','visible').hide().fadeIn("slow");
     }
   });
 
-  $('#item_answer').keydown(function(event) {
+  answer_box.keydown(function(event) {
     if(event.keyCode == 8) {
-      box.val(answer.substring(0, box.val().length+1));  
+      answer_box.val(answer.substring(0, answer_box.val().length+1));  
     }
     else {
       key =  String.fromCharCode(event.keyCode).toLowerCase();
-      char_answer = answer.substring(box.val().length, box.val().length+1).toLowerCase();
+      char_answer = answer.substring(answer_box.val().length, answer_box.val().length+1).toLowerCase();
       if(key == char_answer) {
-        box.val(box.val() + answer.substring(box.val().length, box.val().length+1));
+        answer_box.val(answer_box.val() + answer.substring(answer_box.val().length, answer_box.val().length+1));
       } 
       else {
-        $('#item_answer').css('background-color','#FFB0B0');
+        answer_box.css('background-color','#FFB0B0');
         setTimeout( "$('#item_answer').css('background-color', old)",100);
       }
     }
