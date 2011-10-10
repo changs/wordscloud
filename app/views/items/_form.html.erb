@@ -28,18 +28,20 @@
     if(!once) {
       show_answer.css('visibility','hidden');
       $('#grades').css('visibility','visible').hide().fadeIn("slow");
+      bind_keys();
     }
   });
 
-  answer_box.keyup(function() {
+  answer_box.bind('keyup', function() {
     if(answer_box.val().length == answer.length && !once) {
       once = true;
       show_answer.css('visibility','hidden');
       $('#grades').css('visibility','visible').hide().fadeIn("slow");
+      bind_keys();
     }
   });
 
-  answer_box.keydown(function(event) {
+  answer_box.bind('keydown', function(event) {
     if(event.keyCode == 8) {
       answer_box.val(answer.substring(0, answer_box.val().length+1));  
     }
@@ -56,4 +58,14 @@
     }
     return false;
   });
+
+  function bind_keys() {
+    answer_box.unbind();
+    answer_box.attr('readonly', 'readonly');
+    $(document).bind('keydown', '1', function() { $('[value="Null"]').focus().click(); });
+    $(document).bind('keydown', '2', function() { $('[value="Bad"]').focus().click(); });
+    $(document).bind('keydown', '3', function() { $('[value="Pass"]').focus().click(); });
+    $(document).bind('keydown', '4', function() { $('[value="Good"]').focus().click(); });
+    $(document).bind('keydown', '5', function() { $('[value="Ideal"]').focus().click(); });
+  }
 </script>
