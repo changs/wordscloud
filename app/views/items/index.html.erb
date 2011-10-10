@@ -1,13 +1,23 @@
-<%= link_to "Create a new item", new_user_item_path(current_user) %>
+<%= link_to "Create a new item", new_user_item_path(current_user) if @owner%>
+<%= content_tag(:h3, "#{@owner_name}'s items") unless @owner %>
 <div id="items">
   <%= render 'items', items: @items %>
 </div>
 
 <script>
+  var item_row_color = $('.item_row').css('background-color');
   $(function() {
-    $(".item_row").live("click", function(evt) {
+    $(".item_row").live({
+      "click": function(evt) {
       var id = $(evt.target).parent().attr('id');
       window.location.href = '/users/<%= current_user.id %>/items/' + id + '/edit'
+      },
+      "mouseenter": function() {
+        $(this).css('background-color', '#E0FFC8');
+      },
+      "mouseleave": function() {
+        $(this).css('background-color', item_row_color);
+      }
     });
 
     $(".pagination a").live("click", function() {
