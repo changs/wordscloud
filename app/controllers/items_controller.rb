@@ -6,7 +6,14 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = current_user.items.paginate(per_page: 1, page: params[:page])
+    if params[:user_id].nil?
+      @items = current_user.items.paginate(per_page: 1, page: params[:page])
+      @owner = true
+    else
+      @owner = false
+      @owner_name = User.find_by_id(params[:user_id]).username
+      @items = User.find_by_id(params[:user_id]).items.where("public" => true).paginate(per_page: 1, page: params[:page])
+    end
   end
 
   def new

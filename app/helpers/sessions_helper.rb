@@ -35,8 +35,12 @@ module SessionsHelper
       flash[:error] = "You're not allowed to do that. Please sign in."
       redirect_to signin_path
     end
-
   end
+
+  def owner?
+      current_user?(User.find(params[:user_id]))
+  end
+
   def owner_of
     unless (Item.find(params[:id])).user_id == current_user.id
       flash[:error] = "You're not allowed to do that."
