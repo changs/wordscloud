@@ -55,11 +55,21 @@ class ItemsController < ApplicationController
     grades = { "Ideal" => 5, "Good" => 4, "Pass" => 3, "Bad" => 2, "Null" => 1 }
     el = Item.find_by_id(params[:id])
     el.update_ef(grades[params[:commit]])
-    #el.save
+    el.save
     @item = Item.next_review_at(current_user)
     respond_to do |format|
       format.js 
       format.html { render 'reviev' }
     end
+  end
+
+  def share
+    @item = current_user.items.new
+    @item.question = Item.find_by_id(params[:id]).question
+    @item.answer = Item.find_by_id(params[:id]).answer
+    @item.public = true
+    @item.save
+    flash[:success] = "Item added to to yours"
+    redirect_to request.referer
   end
 end

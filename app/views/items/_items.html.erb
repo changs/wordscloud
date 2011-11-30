@@ -4,14 +4,19 @@
   <tr>
     <th>Question</th>
     <th>Answer</th>
+    <% unless params[:user_id].nil? || current_user == params[:user_id]  %>
+      <th>Add to my words</th>
+    <% end %>
   </tr>
 </thead>
 <tbody>
-
   <% items.each do |item| %>
   <tr id="<%= item.id %>" class="item_row">
     <td><%= item.question[0..20] %></td>
     <td><%= item.answer[0..20] %></td>
+    <% unless params[:user_id].nil? || current_user == params[:user_id]  %>
+    <td>Add</td>
+    <% end %>
   </tr>
   <% end %>
 </tbody>

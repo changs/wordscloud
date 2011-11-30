@@ -9,8 +9,12 @@
   $(function() {
     $(".item_row").live({
       "click": function(evt) {
-      var id = $(evt.target).parent().attr('id');
-      window.location.href = '/users/<%= current_user.id %>/items/' + id + '/edit'
+        var id = $(evt.target).parent().attr('id');
+        <% if params[:user_id] == nil || current_user == params[:user_id]  %>
+        window.location.href = '/users/<%= current_user.id %>/items/' + id + '/edit';
+        <% else %>
+        window.location.href = '/items/' + id + '/share';
+        <% end %>
       },
       "mouseenter": function() {
         $(this).css('background-color', '#E0FFC8');
