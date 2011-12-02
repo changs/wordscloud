@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   
   def index
     @application_layout = true
-
+    @users = User.search(params[:search])
   end
 
   private

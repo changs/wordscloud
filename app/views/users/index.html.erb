@@ -1,0 +1,30 @@
+Szukaj
+<%= form_tag users_path, method: 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+<table>
+  <tbody>
+    <% @users.each do |u| %>
+    <tr>
+      <td class="user_row" id="<%= u.id %>a" > <%= avatar_for u %> </td>
+      <td class="user_row" id="<%= u.id %>b" > <%= u.username %> </td>
+      <td> status </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+  var user_row_color = $('.user_row').css('background-color');
+  $(function() {
+    $(".user_row").live({
+      "click": function(evt) {
+        var id = $(evt.target).attr('id').slice(0,-1);
+        window.location.href = '/users/' + id ;
+      },
+    });
+  });
+</script>
