@@ -1,1 +1,2 @@
 <%= avatar_for @user %><%= "#{@user.username} - username" %>
+<%= render 'follow_form' if signed_in? %>

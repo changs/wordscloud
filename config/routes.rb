@@ -6,7 +6,7 @@ Wordscloud::Application.routes.draw do
     end
   end
 
-
+  resources :relationships, :only => [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
