@@ -1,7 +1,11 @@
 class Item < ActiveRecord::Base
   attr_accessible :question, :answer, :user, :public
   attr_accessor :grade
+  
   belongs_to :user
+  has_many :item_relationships, foreign_key: "parent_id", dependent: :destroy
+  has_many :children, through: :item_relationships, source: :child
+  
   validates :question, presence: true
   validates :answer, presence: true
 
@@ -27,5 +31,13 @@ class Item < ActiveRecord::Base
     self.ef = 2.2
     self.interval = 1
     self.review_at = (Time.now + 1.day)
+  end
+
+  def parent?(child)
+    item_relationships.find_by_child_id(child)
+  end
+
+  def share(child)
+    item_relationships.create!(child_id: child.id)
   end
 end

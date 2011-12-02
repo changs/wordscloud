@@ -15,7 +15,19 @@
     <td><%= item.question[0..20] %></td>
     <td><%= item.answer[0..20] %></td>
     <% unless params[:user_id].nil? || current_user == params[:user_id]  %>
-    <td>Add</td>
+    <td>
+      <% unless item.children.empty? %>
+        <% item.children.each do |x|  %>
+          <% unless current_user.items.include? x %>
+            <%=link_to "Add", share_url(id: item.id) %>
+          <% else %>
+            Added
+          <% end %>
+          <% end %>
+        <% else %>
+          <%=link_to "Add", share_url(id: item.id) %>
+        <% end %>
+    </td>
     <% end %>
   </tr>
   <% end %>

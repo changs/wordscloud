@@ -53,6 +53,11 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
+  
+  def index
+    @application_layout = true
+
+  end
 
   private
   def user_layout

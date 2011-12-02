@@ -69,6 +69,7 @@ class ItemsController < ApplicationController
     @item.answer = Item.find_by_id(params[:id]).answer
     @item.public = true
     @item.save
+    Item.find_by_id(params[:id]).share(@item)
     flash[:success] = "Item added to to yours"
     redirect_to request.referer
   end

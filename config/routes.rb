@@ -12,7 +12,7 @@ Wordscloud::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
   match '/items', to: 'items#index'
-  match '/items/:id/share', to: 'items#share'
+  match '/items/:id/share', to: 'items#share', as: :share
   match '/new_item', to: 'items#new'
   match '/review', to: 'items#review'
   match '/users/:user_id/items/:id/reviewed' => 'items#reviewed' 
