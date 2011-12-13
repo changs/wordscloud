@@ -1,8 +1,12 @@
 Wordscloud::Application.routes.draw do
   resources :users do
-    resources :items
     member do
-      post 'new'
+      get :following, :followers
+    end
+    resources :items do
+      member do
+        post 'new'
+      end
     end
   end
 

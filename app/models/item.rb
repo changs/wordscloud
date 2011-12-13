@@ -1,11 +1,11 @@
 class Item < ActiveRecord::Base
   attr_accessible :question, :answer, :user, :public
   attr_accessor :grade
-  
+
   belongs_to :user
   has_many :item_relationships, foreign_key: "parent_id", dependent: :destroy
   has_many :children, through: :item_relationships, source: :child
-  
+
   validates :question, presence: true
   validates :answer, presence: true
 
@@ -40,4 +40,21 @@ class Item < ActiveRecord::Base
   def share(child)
     item_relationships.create!(child_id: child.id)
   end
+
+
+  default_scope :order => 'items.created_at DESC'
+  # Return microposts from the users being followed by the given user.
+  scope :from_users_followed_by, lambda { |user| followed_by(user) }
+
+  private
+
+  # Return an SQL condition for users followed by the given user.
+  # We include the user's own id as well.
+  def self.followed_by(user)
+    following_ids = %(SELECT followed_id FROM relationships
+                        WHERE follower_id = :user_id)
+                        where("user_id IN (#{following_ids})",
+                              { :user_id => user })
+  end
+
 end

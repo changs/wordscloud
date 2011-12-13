@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_filter :owner, only: [:edit, :update]
+  before_filter :signed_in
+  skip_before_filter :signed_in, only: [:new, :create]
   layout :user_layout
 
   def new
@@ -36,6 +38,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @application_layout = true
+    @feed_items = current_user.feed.paginate(page: params[:page])
   end
 
   def edit
@@ -55,8 +58,23 @@ class UsersController < ApplicationController
   end
   
   def index
+    @user = current_user
     @application_layout = true
     @users = User.search(params[:search])
+  end
+
+  def following
+    @application_layout = true
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @application_layout = true
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   private

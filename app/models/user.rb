@@ -4,17 +4,17 @@ class User < ActiveRecord::Base
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship",
-                                   dependent: :destroy
+    dependent: :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   attr_accessible :username, :fullname, :email, :password
   before_create { generate_token(:auth_token) }
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :username, presence: true, length: { maximum: 20 },
-            uniqueness: { case_sensitive: false }
+    uniqueness: { case_sensitive: false }
   validates :fullname, presence: true, length: { maximum: 30 }
   validates :email, format: { with: email_regex },
-            uniqueness: { case_sensitive: false }, length: { maximum: 30 }
+    uniqueness: { case_sensitive: false }, length: { maximum: 30 }
   validates :password, length: { in: 5..25 }
 
   def generate_token(column)
@@ -41,5 +41,9 @@ class User < ActiveRecord::Base
 
   def unfollow!(followed)
     relationships.find_by_followed_id(followed).destroy
+  end
+
+  def feed
+    items = Item.from_users_followed_by(self).where("public = ?", true)
   end
 end

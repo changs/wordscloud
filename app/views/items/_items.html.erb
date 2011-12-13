@@ -11,7 +11,7 @@
 </thead>
 <tbody>
   <% items.each do |item| %>
-  <tr id="<%= item.id %>" class="item_row">
+  <tr id="<%= item.id %>" class="item_row pointer">
     <td><%= item.question[0..20] %></td>
     <td><%= item.answer[0..20] %></td>
     <% unless params[:user_id].nil? || current_user == params[:user_id]  %>
