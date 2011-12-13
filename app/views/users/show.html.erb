@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Question</th>
       <th>Answer</th>
       <th>Add to my words</th>
@@ -14,7 +13,6 @@
   <tbody>
     <% @feed_items.each do |item| %>
     <tr id="<%= item.id %>" class="item_row">
-      <td><%= User.find_by_id(item.user_id).username %></td>
       <td><%= item.question[0..20] %></td>
       <td><%= item.answer[0..20] %></td>
       <td>

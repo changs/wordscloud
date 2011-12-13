@@ -38,7 +38,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @application_layout = true
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    if params[:id] && current_user != @user 
+      @feed_items = @user.items.where("public = ?", true).paginate(page: params[:page])
+      render "show_current"
+    else
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
   end
 
   def edit
