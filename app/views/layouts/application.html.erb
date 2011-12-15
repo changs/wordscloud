@@ -36,11 +36,13 @@
             To review: <span id="how_many_to_review"><%= how_many_to_review %></span>
             <span class="side_stat">
               Items: <span id="how_many_items"><%= how_many_items %></span>
+              <div id="following">
+                <%= link_to "Following: #{current_user.following.count}", following_user_path(current_user)  %>
+              </div>
+              <div id="followers">
+                <%= link_to "Followers: #{current_user.followers.count}", followers_user_path(current_user)  %>
+              </div>
             </div>
-          </div>
-          <div id="following">
-          </div>
-          <div id="followers">
           </div>
           <div id="side_bottom">
             <h3>Recent activity</h3>

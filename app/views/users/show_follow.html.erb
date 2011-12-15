@@ -1,0 +1,12 @@
+<table summary="Information about following/followers">
+  <tr>
+    <td class="main">
+      <% unless @users.empty? %>
+      <ul class="users">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate @users %>
+      <% end %>
+    </td> 
+  </tr>
+</table>

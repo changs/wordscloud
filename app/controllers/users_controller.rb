@@ -40,9 +40,10 @@ class UsersController < ApplicationController
     @application_layout = true
     if params[:id] && current_user != @user 
       @feed_items = @user.items.where("public = ?", true).paginate(page: params[:page])
-      render "show_current"
+      render "show"
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
+      render "show_current"
     end
   end
 
