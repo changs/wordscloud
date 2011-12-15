@@ -1,9 +1,11 @@
 <%= form_for ([current_user, @item]) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <div class="field">
+  <%= f.label :question %>
   <%= f.text_area :question, rows: 3, cols: 60 %>
 </div>
 <div class="field">
+  <%= f.label :answer %>
   <%= f.text_area :answer, rows: 3, cols: 60 %>
 </div>
 <div class="field">
@@ -11,6 +13,6 @@
   <%= f.label :public, class: "near_checkbox" %>
 </div>
 <div class="action">
-  <%= f.submit ((params[:action] != 'edit') ? "Add item" : "Edit item"), class: "input_submit" %>
+  <%= f.submit ((params[:action] != 'edit') ? "Add item" : "Save changes"), class: "input_submit" %>
 </div>
 <% end %>
