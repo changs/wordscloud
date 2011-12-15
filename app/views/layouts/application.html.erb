@@ -13,7 +13,7 @@
     <% flash.each do |name, msg| %>
     <% nm = "note_#{name}" %>
     <%= content_tag :div, :id => "note", class: nm do %>
-    <%= msg %> <a id="close">[close]</a>
+    <%= msg %> <span id="close2">[x]</span>
     <% end %>
     <% end %>
     <div id="top">
