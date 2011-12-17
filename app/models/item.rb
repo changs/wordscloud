@@ -16,16 +16,16 @@ class Item < ActiveRecord::Base
   end
 
   def update_ef(grade)
-    ef = ef+(0.1-(5-grade)*(0.08+(5-grade)*0.02))   # Supermemo 2.0 Algorithm
-    ef = 1.3 if ef < 1.3
-    if interval <= 1 and grade >= 3
-      interval = 3
-    elsif (interval != 1 ) and (grade >= 3)
-      interval = interval * ef
+    self.ef = self.ef+(0.1-(5-grade)*(0.08+(5-grade)*0.02))   # Supermemo 2.0 Algorithm
+    self.ef = 1.3 if self.ef < 1.3
+    if self.interval <= 1 and grade >= 3
+      self.interval = 3
+    elsif (self.interval != 1 ) and (grade >= 3)
+      self.interval = self.interval * self.ef
     else
-      interval = 0
+      self.interval = 0
     end
-    review_at = updated_at + (interval).days 
+    self.review_at = self.updated_at + (self.interval).days 
   end
   def set_default_attr
     self.ef = 2.2
