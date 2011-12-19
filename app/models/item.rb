@@ -27,7 +27,7 @@ class Item < ActiveRecord::Base
 
   before_create { set_default_attr }
 
-  def self.next_review_at(user)
+  def self.next_review_for(user)
     user.items.where("review_at <= ?", Time.now.end_of_day ).order('RANDOM()').first
   end
 

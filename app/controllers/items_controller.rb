@@ -44,11 +44,11 @@ class ItemsController < ApplicationController
   end
 
   def review
-    unless Item.next_review_at(current_user)
+    unless Item.next_review_for(current_user)
       flash[:notice] = "Great! You have reviewed all items for today."
       redirect_to current_user
     end
-    @item = Item.next_review_at(current_user)
+    @item = Item.next_review_for(current_user)
   end
 
   def reviewed
@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
     el = Item.find_by_id(params[:id])
     el.update_ef(grades[params[:commit]])
     el.save
-    @item = Item.next_review_at(current_user)
+    @item = Item.next_review_for(current_user)
     respond_to do |format|
       format.js 
       format.html { render 'reviev' }
