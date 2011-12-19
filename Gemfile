@@ -30,6 +30,7 @@ end
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 gem "rspec-rails", :group => [:test, :development]
 group :test do

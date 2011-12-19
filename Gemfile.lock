@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: 672a22abf6165d6cc1dfb4d29dff5839f88af769
+  specs:
+    annotate (2.4.1.beta1)
+
+GIT
   remote: git://github.com/jnicklas/capybara.git
   revision: e20a3336cca83976344ca6b6aea67c88a46fa41e
   specs:
@@ -163,6 +169,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   capybara!
   coffee-script
   database_cleaner

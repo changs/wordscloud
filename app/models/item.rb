@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: items
+#
+#  id         :integer         not null, primary key
+#  question   :string(255)
+#  answer     :string(255)
+#  ef         :float
+#  interval   :float
+#  created_at :datetime
+#  updated_at :datetime
+#  user_id    :integer
+#  review_at  :datetime
+#  public     :boolean
+#
+
 class Item < ActiveRecord::Base
   attr_accessible :question, :answer, :user, :public
   attr_accessor :grade
