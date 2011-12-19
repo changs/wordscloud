@@ -18,10 +18,12 @@
   <%= f.label :email %>
   <%= f.text_field :email %>
 </div>
+<% if controller.action_name =~ /new|create/ %>
 <div class="field">
   <%= f.label :password %>
   <%= f.password_field :password, value: @passw %>
 </div>
+<% end %>
 <div class="field">
   <%= f.label :username %>
   <%= f.text_field :username %>
