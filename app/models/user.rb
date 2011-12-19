@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, conditions: ['username LIKE ?', "%#{search}%"])
+      find(:all, conditions: ['username LIKE ? or fullname LIKE ?', "%#{search}%", "%#{search}%"])
     else
       find(:all)
     end
