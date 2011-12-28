@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_filter :signed_in
-  before_filter :owner_of, only: [:edit, :update, :reviewed]
+  before_filter :owner_of, only: [:edit, :update, :reviewed, :delete]
   def show
     #redirect_to current_user
   end
@@ -41,6 +41,12 @@ class ItemsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+      current_user.items.find(params[:id]).destroy
+      flash[:success] = "Item deleted"
+      redirect_to items_path
   end
 
   def review
