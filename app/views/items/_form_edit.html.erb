@@ -2,11 +2,11 @@
 <%= render 'shared/error_messages', object: f.object %>
 <div class="field">
   <%= f.label :question %>
-  <%= f.text_area :question, rows: 3, cols: 60 %>
+  <%= f.text_area :question, rows: 3, cols: 60, class: 'answer_box' %>
 </div>
 <div class="field">
   <%= f.label :answer %>
-  <%= f.text_area :answer, rows: 3, cols: 60 %>
+  <%= f.text_area :answer, rows: 3, cols: 60, class: 'answer_box' %>
 </div>
 <div class="field">
   <%= f.check_box :public %>
