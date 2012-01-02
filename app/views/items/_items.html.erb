@@ -12,8 +12,8 @@
 <tbody>
   <% items.each do |item| %>
   <tr id="<%= item.id %>" class="item_row pointer">
-    <td><%= item.question[0..20] %></td>
-    <td><%= item.answer[0..20] %></td>
+    <td><%= item.question[0..30] %> <%= '...' if item.question.length > 30 %></td>
+    <td><%= item.answer[0..30] %></td>
     <% unless params[:user_id].nil? || current_user == params[:user_id]  %>
     <td>
       <% unless item.children.empty? %>

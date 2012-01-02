@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     if params[:user_id].nil?
-      @items = current_user.items.paginate(per_page: 1, page: params[:page])
+      @items = current_user.items.paginate(per_page: 20, page: params[:page])
       @owner = true
     else
       @owner = false
@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.new(params[:item])
     if @item.save
       flash[:success] = "Done"
-      redirect_to current_user
+      redirect_to items_path 
     else
       render 'new'
     end

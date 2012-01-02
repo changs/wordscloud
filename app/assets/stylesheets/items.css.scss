@@ -45,7 +45,7 @@ border-top-right-radius: 5px;
 
 table         { margin-bottom: 1.4em; width:100%; }
 th            { font-weight: bold; }
-thead th      { background: #c3d9ff; }
+thead th      { background: #CEF2E3; }
 th,td,caption { padding: 4px 10px 4px 5px; }
 /*
   You can zebra-stripe your tables in outdated browsers by adding
@@ -75,13 +75,13 @@ tbody tr.even td  {
   .pagination .current {
     font-style: normal;
     font-weight: bold;
-    background: #2e6ab1;
+    background: #5EAB8B;
     color: white;
-    border: 1px solid #2e6ab1; }
+    border: 1px solid black; }
   .pagination a {
     text-decoration: none;
-    color: #105cb6;
-    border: 1px solid #9aafe5; }
+    color: #57B58E;
+    border: 1px solid #5EAB8B; }
     .pagination a:hover, .pagination a:focus {
       color: #000033;
       border-color: #000033; }
@@ -89,7 +89,7 @@ tbody tr.even td  {
     color: #aaaaaa;
     padding-top: 0.8em; }
   .pagination .page_info {
-    background: #2e6ab1;
+    background: #57B58E;
     color: white;
     padding: 0.4em 0.6em;
     width: 22em;
@@ -97,7 +97,7 @@ tbody tr.even td  {
     text-align: center; }
     .pagination .page_info b {
       color: #000033;
-      background: #6aa6ed;
+      background: #82D9B5;
       padding: 0.1em 0.25em; }
   .pagination:after {
     content: ".";
