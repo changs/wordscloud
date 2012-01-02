@@ -1,4 +1,4 @@
-<%= link_to "Create a new item", new_user_item_path(current_user) if @owner%>
+<%= link_to "Create a new item", new_user_item_path(current_user), class: 'btn' if @owner%>
 <%= content_tag(:h3, "#{@owner_name}'s items") unless @owner %>
 <div id="items">
   <%= render 'items', items: @items %>
