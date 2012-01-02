@@ -12,7 +12,7 @@
   <%= f.check_box :public %>
   <%= f.label :public, class: "near_checkbox" %>
 </div>
-<% if params[:action] = 'edit' %>
+<% if params[:action] == 'edit' %>
   <%= link_to "Delete", user_item_path(current_user, @item), :confirm => 'Are you sure?', :method => :delete%>
 <% end %>
 <div class="action">
