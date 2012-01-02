@@ -1,7 +1,10 @@
-<%= avatar_for @user %><%= "#{@user.username} - username" %>
+<%= avatar_for @user %><%= " #{@user.username} - #{@user.fullname}" %>
+<br/><br/>
+
 
 <%= render 'follow_form' if signed_in? %>
-
+<br/><br/>
+<h3>Feed</h3>
 <table>
   <thead>
     <tr>

@@ -1,29 +1,39 @@
 Szukaj
 <%= form_tag users_path, method: 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
+<p>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search", name: nil %>
+</p>
 <% end %>
 <table>
   <tbody>
     <% @users.each do |u| %>
-    <tr>
-      <td class="user_row" id="<%= u.id %>a" > <%= avatar_for u %> </td>
-      <td class="user_row" id="<%= u.id %>b" > <%= u.username %> </td>
+    <tr class="user_row">
+      <td id="<%= u.id %>a" width="40" > <%= avatar_for u %> </td>
+      <td id="<%= u.id %>b" > <%= u.username %> </td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
 <script>
-  var user_row_color = $('.user_row').css('background-color');
+  
   $(function() {
+    var user_row_color;
     $(".user_row").live({
       "click": function(evt) {
         var id = $(evt.target).attr('id').slice(0,-1);
         window.location.href = '/users/' + id ;
       },
+      "mouseenter": function() {
+        user_row_color = $('.user_row').css('background-color');
+        $(this).css('background-color', '#E0FFC8');
+        $(this).css('cursor','pointer');
+      },
+      "mouseleave": function() {
+        $(this).css('background-color',user_row_color );
+        $(this).css('cursor','default');
+      }
     });
   });
 </script>
