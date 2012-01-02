@@ -38,21 +38,24 @@
             <span class="side_stat">
               Items: <span id="how_many_items"><%= how_many_items %></span>
               <div id="following">
+                <br/>
                 <%= link_to "Following: #{current_user.following.count}", following_user_path(current_user)  %>
               </div>
               <div id="followers">
                 <%= link_to "Followers: #{current_user.followers.count}", followers_user_path(current_user)  %>
               </div>
+              <div id="side_bottom">
+                <h2>Your progress</h2>
+                <% memorized = remembered_items current_user %>
+                You have remembered <%= pluralize(memorized,'item') %>.
+
+              </div>
             </div>
           </div>
-          <div id="side_bottom">
-            <h3>Recent activity</h3>
-          </div>
         </div>
-      </div>
-      <div class="clear">
+          <div class="clear">
 
-      </div>
-      <%= render 'layouts/footer' %>
-    </body>
-  </html>
+          </div>
+          <%= render 'layouts/footer' %>
+        </body>
+      </html>

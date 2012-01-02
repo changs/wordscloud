@@ -1,7 +1,7 @@
 <%= form_for ([current_user, @item]), url: "/users/#{current_user.id}/items/#{@item.id}/reviewed", remote: true do |f| %>
 <span class="bookmark_top"><%= link_to "Edit", url_for([:edit, current_user, @item]) %></span>
-<div class="field answer_box">
-  <p class=""><%= @item.question %></p>
+<div class="field">
+  <%= f.text_area :question, rows: 4, cols: 60, class: "answer_box", readonly: "yes" %>
 </div>
 <div class="field field_top_margin">
   <span id="show_answer" class="bookmark_top" >Show answer</span>
