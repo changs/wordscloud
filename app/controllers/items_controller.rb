@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   def index
     if params[:user_id].nil?
-      @items = current_user.items.paginate(per_page: 20, page: params[:page])
+      @items = current_user.items.paginate(per_page: 10, page: params[:page])
       @owner = true
     else
       @owner = false
