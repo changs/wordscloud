@@ -14,13 +14,15 @@
     <% @feed_items.each do |item| %>
     <tr id="<%= item.id %>" class="item_row">
             <% u = User.find_by_id(item.user_id) %>
-      <td><a href="<%= user_path(u) %>"><%= avatar_for(u,20)  %><%= u.username %></a></td>
+      <td><a href="<%= user_path(u) %>"><%= avatar_for(u,20)  %>&nbsp;&nbsp;<%= u.username %></a></td>
       <td><%= item.question[0..20] %></td>
       <td><%= item.answer[0..20] %></td>
       <td
         <% add_link = true %>>
         <% current_user.items.each do |x| %>
-        <% add_link = false if item.parent? x %>
+        <% if (item.parent? x) || ((x.parent != nil && item.parent != nil) && x.parent.id == item.parent.id) %>
+        <% add_link = false %>
+        <% end %>
         <% end %>
         <%= add_link ? (link_to "Add", share_url(id: item.id)): "Added" %>
       </td>
