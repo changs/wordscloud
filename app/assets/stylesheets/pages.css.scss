@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.welcome_link {
+  font-size: 2em;
+  margin: 150px;
+  color: black;
+  font-weight: bold;
+}
+
 #pages {
   height: 100%;
   margin-bottom: 1px;

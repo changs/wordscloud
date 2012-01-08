@@ -2,5 +2,5 @@
   <h1 id="welcome">Wordscloud</h1>
 <h2>We help your brain to remember</h2>
 </div>
-<%= link_to "Sign up!", signup_path %>
-<%= link_to "Sign in!", signin_path %>
+First time here? <%= link_to "Sign up!", signup_path, class: "welcome_link" %>
+Already a member? <%= link_to "Sign in!", signin_path, class: "welcome_link" %>

@@ -21,7 +21,7 @@
       <td>
         <% add_link = true %>
         <% current_user.items.each do |x| %>
-        <% if (item.parent? x) ||((x.parent != nil && item.parent != nil) && x.parent.id == item.parent.id) %>
+        <% if (item.parent? x) || ((x.parent != nil && item.parent != nil) && x.parent.id == item.parent.id) %>
         <% add_link = false %>
         <% end %>
         <% end %>
