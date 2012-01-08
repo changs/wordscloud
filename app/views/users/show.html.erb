@@ -18,14 +18,12 @@
     <tr id="<%= item.id %>" class="item_row">
       <td><%= item.question[0..20] %></td>
       <td><%= item.answer[0..20] %></td>
-      <td>
-        <% item.children.each do |x|  %>
-          <% unless current_user.items.include? x %>
-            <%=link_to "Add", share_url(id: item.id) %>
-          <% else %>
-          Added
-         <% end %>
+            <td
+        <% add_link = true %>>
+        <% current_user.items.each do |x| %>
+        <% add_link = false if item.parent? x %>
         <% end %>
+        <%= add_link ? (link_to "Add", share_url(id: item.id)): "Added" %>
       </td>
     </tr>
      <% end %>

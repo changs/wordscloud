@@ -21,7 +21,9 @@ class Item < ActiveRecord::Base
   belongs_to :user
   has_many :item_relationships, foreign_key: "parent_id", dependent: :destroy
   has_many :children, through: :item_relationships, source: :child
-
+  has_many :reverse_item_relationships, foreign_key: "child_id", class_name: "ItemRelationship",
+    dependent: :destroy
+  has_many :parent, through: :reverse_item_relationships, source: :parent
   validates :question, presence: true
   validates :answer, presence: true
 

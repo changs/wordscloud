@@ -10,28 +10,22 @@
       <th>Add to my words</th>
     </tr>
   </thead>
-  <tbody>
+    <tbody>
     <% @feed_items.each do |item| %>
     <tr id="<%= item.id %>" class="item_row">
-      <% u = User.find_by_id(item.user_id) %>
+            <% u = User.find_by_id(item.user_id) %>
       <td><a href="<%= user_path(u) %>"><%= avatar_for(u,20)  %><%= u.username %></a></td>
       <td><%= item.question[0..20] %></td>
       <td><%= item.answer[0..20] %></td>
-      <td>
-        <% unless item.children.empty? %>
-          <% item.children.each do |x|  %>
-            <% unless current_user.items.include? x %>
-              <%=link_to "Add", share_url(id: item.id) %>
-            <% else %>
-            Added
-          <% end %>
+      <td
+        <% add_link = true %>>
+        <% current_user.items.each do |x| %>
+        <% add_link = false if item.parent? x %>
         <% end %>
-        <% else %>
-          <%=link_to "Add", share_url(id: item.id) %>
-        <% end %>
+        <%= add_link ? (link_to "Add", share_url(id: item.id)): "Added" %>
       </td>
-      <% end %>
     </tr>
+     <% end %>
   </tbody>
 </table>
 <div class="pagination">
