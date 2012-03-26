@@ -1,37 +1,44 @@
 require 'spec_helper'
 
 describe Item do
-  before(:each) do
-    @user = Factory(:user)
-    @attr = { question: "Question", answer: "Answer" }
-  end
-   
-  it "should add item given valid parameters" do
-    el = @user.items.create!(@attr)
-    el.should be_valid
+  let(:user) { FactoryGirl.create(:user) }
+  before { @item = user.items.build(question: "Q", answer: "A") }
+
+  subject { @item }
+
+  it { should be_valid }
+  its(:user) { should == user }
+
+  describe "when question is not present" do
+    before { @item.question = " " }
+    it { should_not be_valid }
   end
 
-  it "should not add item given invalid parameters" do
-    el = @user.items.new(@attr.merge(question: ""))
-    el.should_not be_valid
+  describe "when answer is not present" do
+    before { @item.answer = " " }
+    it { should_not be_valid }
   end
 
-  it "should not add item given invalid parameters" do
-    el = @user.items.new(@attr.merge(answer: ""))
-    el.should_not be_valid
+  describe "when user_id is not present" do
+    before { @item.user_id = nil }
+    it { should_not be_valid }
   end
 
-  describe 'Algorithm' do
-    it "should return an item if interval is correct" do
-      el = @user.items.create!(@attr)
-      el.review_at -= 1.day
-      el.save
-      Item.next_review_at(@user).should eq(el)
+  describe "when there is an item to review" do
+    before do
+      @item.save
+      @item.review_at -= 1.day;
+      @item.save 
     end
-
-    it "should not return an item if interval is incorrect" do
-      el = @user.items.create!(@attr)
-      Item.next_review_at(@user).should be_nil
+    it "should return the item" do
+      Item.next_review_for(user).should eq(@item)
     end
   end
+
+  describe "when there isn't an item to review" do
+    it "should not return any item" do
+      Item.next_review_for(user).should be_nil
+    end
+  end
+
 end
