@@ -26,6 +26,7 @@ class Item < ActiveRecord::Base
   has_one :parent, through: :reverse_item_relationships, source: :parent
   validates :question, presence: true
   validates :answer, presence: true
+  validates :user_id, presence: true
 
   before_create { set_default_attr }
 
