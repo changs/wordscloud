@@ -27,9 +27,9 @@ class User < ActiveRecord::Base
   validates :username, presence: true, length: { maximum: 20 },
     uniqueness: { case_sensitive: false }
   validates :fullname, presence: true, length: { maximum: 30 }
-  validates :email, format: { with: email_regex },
-    uniqueness: { case_sensitive: false }, length: { maximum: 30 }
-  validates :password, length: { in: 5..25 }, :on => :creation
+  validates :email, presence: true, format: { with: email_regex },
+    uniqueness: { case_sensitive: false }
+  validates :password, length: { in: 5..25 }
 
   def generate_token(column)
     begin
