@@ -1,12 +1,14 @@
-Factory.define :user do |f|
-  f.sequence(:username) { |n| "john#{n}" }
-  f.fullname  'Doe'
-  f.sequence(:email) { |n| "test#{n}@example.com" }
-  f.password 'foobar'
-end
+FactoryGirl.define do
+  factory :user do 
+    sequence(:username) { |n| "john#{n}" }
+    fullname  'Doe'
+    sequence(:email) { |n| "test#{n}@example.com" }
+    password 'foobar'
+  end
 
-Factory.define :item do |f|
-  f.sequence(:question) { |n| "Question #{n}" }
-  f.sequence(:answer) { |n| "Answer #{n}" }
-  f.association :user
+  factory :item do
+    sequence(:question) { |n| "Question #{n}" }
+    sequence(:answer) { |n| "Answer #{n}" }
+    user
+  end
 end

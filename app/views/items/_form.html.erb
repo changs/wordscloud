@@ -15,7 +15,7 @@
   <%= f.submit "Null", class: "input_submit" %>
 </div>
 <% end %>
-
+<small> You can type only correct letters. Type 'backspace' for help</small>
 <script>
   var answer = "<%= @item.answer %>";
   var answer_box = $('#item_answer')

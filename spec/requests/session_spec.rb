@@ -48,7 +48,7 @@ describe "Session" do
 
   it "should show new_user_form on root_path when no-one is signed in" do
     visit root_path
-    page.should have_css("div.new_user_form")
+    page.should have_content("Sign up")
   end
 
    it "should not show new_user_form on root_path when signed in" do

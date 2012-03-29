@@ -12,7 +12,7 @@ describe "Items" do
   describe "GET /review" do
     it "it should show message when there is no items for today" do
       visit '/review'
-      page.should have_css("div.notice")
+      page.should have_css("div.note_notice")
       current_path.should eq(user_path(@user))
     end
 
@@ -21,7 +21,7 @@ describe "Items" do
       fill_in "item_question", with: 'Rower'
       fill_in "item_answer", with: 'Bicycle'
       click_button "Add item"
-      page.should have_css("div.success")
+      page.should have_css("div.note_success")
     end
 
     it "user can't add an item given invalid attributes" do
@@ -37,8 +37,8 @@ describe "Items" do
       item.review_at = 1.day.ago
       item.save
       visit '/review'
-      page.should have_content("Question 1")
-      page.should have_content("Answer 1")
+      page.should have_content(item.question)
+      page.should have_content(item.answer)
     end
   end
 end
